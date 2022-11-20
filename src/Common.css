@@ -1,0 +1,34 @@
+.box{
+    margin: auto;
+    border: 2px solid black;
+    width: 40%;
+    padding: 10px;
+    margin-bottom: 50px;
+}
+.password,.name{
+    margin-bottom: 50px;
+}
+.btn{
+    margin: auto;
+    display: block;
+    background: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: large;
+    border: 2px dotted aquamarine;
+}
+.btn:hover{
+    transform: scale(1.2);
+    transition-duration: 600ms;
+    background-color: aquamarine;
+    color: red;
+}
+.box label{
+    font-size: larger;
+}
+.box div{
+    padding: 3px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
