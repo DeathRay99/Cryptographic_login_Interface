@@ -19,7 +19,7 @@ As for web implementation we have created a single page Sign Up/ Login form.<br>
 * Html/ CSS
 
 ## Algorithm 
-Cipher Technique used is **Ascii Cipher** created by [Sarvagya Saxena](https://github.com/Kaizoku01 "Title")  & [Amar Upadhyay](https://github.com/amarr002 "Title").
+Cipher Technique used is **Ascii Cipher** inspired by [Sarvagya Saxena](https://github.com/Kaizoku01 "Title")  & [Amar Upadhyay](https://github.com/amarr002 "Title").
 
 ## Output
 
