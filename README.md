@@ -2,8 +2,8 @@
 
 ## Implementation
 <p>
-We have created our own cryptographic algorithm which 
-can do both encryption and decryption. We have named it Ascii Cipher, which is based on operations on ascii value of characters.
+I have created our own cryptographic algorithm which 
+can do both encryption and decryption. I have named it Ascii Cipher, which is based on operations on ascii value of characters.
 As for web implementation we have created a single page Sign Up/ Login form.<br>
 
 <li>	During Signup Phase : password entered as plaintext will be encrypted into ciphertext and this text will be stored in the database.</li>
@@ -19,7 +19,7 @@ As for web implementation we have created a single page Sign Up/ Login form.<br>
 * Html/ CSS
 
 ## Algorithm 
-Cipher Technique used is **Ascii Cipher** inspired by [Sarvagya Saxena](https://github.com/Kaizoku01 "Title")  & [Amar Upadhyay](https://github.com/amarr002 "Title").
+Cipher Technique used is **Ascii Cipher** 
 
 ## Output
 

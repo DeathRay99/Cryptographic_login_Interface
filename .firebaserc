@@ -1,0 +1,5 @@
+{
+  "projects": {
+    "default": "cryptographic-login-interface"
+  }
+}

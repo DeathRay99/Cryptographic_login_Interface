@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Common.css";
+
 function SignUp() {
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
@@ -12,6 +13,7 @@ function SignUp() {
     for (var i = 0; i < 5; i++) temp = temp * keyArr[i];
     return temp;
   }
+
   function encrypt(plainText) {
     var newAsciiStr = "";
     for (var i = 0; i < plainText.length; i++) {
@@ -25,7 +27,7 @@ function SignUp() {
   }
   async function dataSubmitHandler(details) {
     await fetch(
-      "https://is-project-73d0c-default-rtdb.firebaseio.com/Users.json",
+      "https://cryptographic-login-interface-default-rtdb.firebaseio.com/Users.json",
       {
         method: "POST",
         body: JSON.stringify({
@@ -34,6 +36,7 @@ function SignUp() {
       }
     );
   }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (user === "" || pass === "") {
@@ -51,12 +54,14 @@ function SignUp() {
     setPass("");
     alert("Successfully signed Up!!");
   };
+
   const handleUserChange = (event) => {
     setUser(event.target.value);
   };
   const handlePassChange = (event) => {
     setPass(event.target.value);
   };
+
   return (
     <form onSubmit={handleSubmit} className="box">
       <div className="name">
@@ -79,9 +84,14 @@ function SignUp() {
           value={pass}
         />
       </div>
-      <button type="submit" className="btn">
-        Sign Up
-      </button>
+      <div>
+        <button type="submit">
+          Sign up
+          <div class="arrow-wrapper">
+            <div class="arrow"></div>
+          </div>
+        </button>
+      </div>
     </form>
   );
 }

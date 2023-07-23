@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from "react";
+import "./Common.css";
+import { Link } from "react-router-dom";
 
 function LogIn() {
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
   const [loadData, setLoadData] = useState([]);
-  var reGenText="";
+  var reGenText = "";
   var keyArr = [2, 3, 5, 7, 11];
+
   var decryptOperation = function (cipher) {
     var temp = parseInt(cipher);
     for (var i = 4; i >= 0; i--) temp = temp / keyArr[i];
     return String.fromCharCode(temp);
   };
-  var decrypt = function (matchinTable,cipherText) {
+  var decrypt = function (matchinTable, cipherText) {
     var y = 0;
     var w = 0;
     var k = 0;
@@ -30,13 +33,15 @@ function LogIn() {
     }
     return reGenText;
   };
+
   useEffect(() => {
     info();
   }, []);
+
   async function info() {
     try {
       const response = await fetch(
-        "https://is-project-73d0c-default-rtdb.firebaseio.com/Users.json"
+        "https://cryptographic-login-interface-default-rtdb.firebaseio.com/Users.json"
       );
       if (!response.ok) {
         throw new Error("Something went wrong");
@@ -57,6 +62,7 @@ function LogIn() {
       console.log(error.message);
     }
   }
+
   const handleVerify = (event) => {
     event.preventDefault();
     if (user === "" || pass === "") {
@@ -66,50 +72,77 @@ function LogIn() {
     const found = loadData.find((userInfo) => {
       return userInfo.user === user;
     });
-    console.log(found);
+    // console.log(found);
     if (found) {
-        var convertedPass = decrypt(found.Table,found.password);
-      if (convertedPass === pass)
+      var convertedPass = decrypt(found.Table, found.password);
+      if (convertedPass === pass) {
+        alert("User successfully logged in");
         console.log("User successfully logged in", found);
-      else console.log("incorrect password");
+      } else {
+        alert("incorrect password");
+        console.log("incorrect password");
+      }
     } else {
       console.log("user not found");
     }
     setUser("");
     setPass("");
   };
+
   const handleUserChange = (event) => {
     setUser(event.target.value);
   };
   const handlePassChange = (event) => {
     setPass(event.target.value);
   };
+
   return (
-    <form onSubmit={handleVerify} className="box">
-      <div className="name">
-        <label htmlFor="Name">UserName</label>
-        <input
-          type="text"
-          name="Name"
-          id="Name"
-          onChange={handleUserChange}
-          value={user}
-        />
+    <div className="mainbox">
+      <form onSubmit={handleVerify} className="box">
+        <div className="name">
+          <label htmlFor="Name">UserName</label>
+          <input
+            type="text"
+            name="Name"
+            id="Name"
+            onChange={handleUserChange}
+            value={user}
+          />
+        </div>
+        <div className="password">
+          <label htmlFor="Password">Password</label>
+          <input
+            type="password"
+            name="Password"
+            id="Password"
+            onChange={handlePassChange}
+            value={pass}
+          />
+        </div>
+        <div>
+          <button type="submit">
+            log In
+            <div class="arrow-wrapper">
+              <div class="arrow"></div>
+            </div>
+          </button>
+        </div>
+      </form>
+
+      <div className="lastclass">
+        <div className="last1">New User , SignIn?</div>
+        <div className="last2">
+          <Link to="/signup">
+            <button>
+              Sign up
+              <div class="arrow-wrapper">
+                <div class="arrow"></div>
+              </div>
+            </button>
+          </Link>
+        </div>
       </div>
-      <div className="password">
-        <label htmlFor="Password">Password</label>
-        <input
-          type="password"
-          name="Password"
-          id="Password"
-          onChange={handlePassChange}
-          value={pass}
-        />
-      </div>
-      <button type="submit" className="btn">
-        log In
-      </button>
-    </form>
+    </div>
   );
 }
 export default LogIn;
